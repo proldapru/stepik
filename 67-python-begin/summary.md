@@ -1,7 +1,8 @@
 ---
-title: Конспект по курсу 67 на Stepik.org "Программирование на python"
-author: Егор Левинца
+title: 'Конспект по курсу 67 на Stepik.org "Программирование на python"'
+author: "Егор Левинца"
 titlepage: true
+geometry: "left=3cm,right=1cm,top=1cm,bottom=2cm"
 ---
 ## Целочисленные операции {#int-operations}
 ```python
@@ -129,7 +130,9 @@ var[::-1] -> '!olleH'   # выведутся все символы, но с ша
 ```
 
 #### Перебор всех символов строки по порядку {#for-loop-by-string}
+```python
 for i in genome: print(i)
+```
 
 ### Методы объекта str {#str-methods}
 ```python
@@ -274,13 +277,13 @@ res = func1(b=2, a=3)
 
 > Типы данных бывают изменяемые (mutable) и незменяемые (immutable). При передаче в функцию Mutable тип данных передается по ссылке (list, dict, set), а immutable по значению (int, float, bool, tuple, str, complex).
 >
-> https://devman.org/qna/26/v-pitone-peremennye-peredajutsja-po-ssylke-ili-po-znacheniju-est-podvodnye-kamni/
+> <https://devman.org/qna/26/v-pitone-peremennye-peredajutsja-po-ssylke-ili-po-znacheniju-est-podvodnye-kamni/>
 >
-> List - Элементы в списке хранятся последовательно, каждому из них присвоены индексы, начиная с нуля.
-> Turple - Кортеж, неизменяемый и более быстрый аналог списка.
-> Set - Множество, набор уникальных элементов в случайном порядке (неупорядоченный список).
-> 
-> Про типы данных в python https://habr.com/ru/post/319164/
+>> List - Элементы в списке хранятся последовательно, каждому из них присвоены индексы, начиная с нуля.  
+>> Turple - Кортеж, неизменяемый и более быстрый аналог списка.  
+>> Set - Множество, набор уникальных элементов в случайном порядке (неупорядоченный список).
+>
+> Про типы данных в python <https://habr.com/ru/post/319164/>
 
 Встроенная функция id(a) позволяет посмотреть идентификатор объекта в памяти (например, проверить, что два имени указывают на один и тот же или разные объекты).
 
@@ -337,7 +340,7 @@ d = {key:value for key, value in zip(x, y)}
 ```python
 s1 = ['a','b','c'] # первый список
 s2 = [1, 2, 3]     # второй список
-dict(zip(s1,s2))  # ключами при этом будут значения из первого списка
+dict(zip(s1,s2))   # ключами при этом будут значения из первого списка
 ```
 
 ### Способы перебора словаря {#dictionary-iteration}
@@ -400,54 +403,68 @@ print('something', file=output)
 ```
 
 ## Врезка со Степика по list comprehension {#list-comprehension}
-> Для тех, кто хочет сократить свой код :) написал небольшое руководство по [list comprehension]
-> на основе примера на stackoverflow.com
-> http://stackoverflow.com/questions/16632124/python-emulate-sum-using-list-comprehension
-> я немного изменил этот пример, чтобы лучше объяснить работу [list comprehension]
-> и вам было проще понять, как применить этот подход к решению задания
+> Для тех, кто хочет сократить свой код :) написал небольшое руководство по [list comprehension]  
+> на основе примера на stackoverflow.com  
+> <http://stackoverflow.com/questions/16632124/python-emulate-sum-using-list-comprehension>  
+> я немного изменил этот пример, чтобы лучше объяснить работу [list comprehension]  
+> и вам было проще понять, как применить этот подход к решению задания  
 >
-> допустим, у нас есть список фруктов, где зафиксированы самые низкие и высокие цены на эти фрукты
-> т.е. по сути это список списков :)
-> `lst = [["apple", 55, 62], ["orange", 60, 74], ["pineapple", 140, 180], ["lemon", 80, 84]]`
+> допустим, у нас есть список фруктов, где зафиксированы самые низкие и высокие цены на эти фрукты  
+> т.е. по сути это список списков :)  
+> ```python
+> lst = [["apple", 55, 62], ["orange", 60, 74], ["pineapple", 140, 180], ["lemon", 80, 84]]
+> ```
 >
-> выведем этот список для нагляности на экран, используя [list comprehension]
-> `[print(el) for el in lst]`
-> `['apple', 55, 62]`
-> `['orange', 60, 74]`
-> `['pineapple', 140, 180]`
-> `['lemon', 80, 84]`
+> выведем этот список для нагляности на экран, используя [list comprehension]  
+> ```python
+> [print(el) for el in lst]
+> ['apple', 55, 62]
+> ['orange', 60, 74]
+> ['pineapple', 140, 180]
+> ['lemon', 80, 84]
+> ```
 >
-> если мы хотим подсчитать среднюю цену на каждый из фруктов, то напишем что-то вроде
-> `sumMiddle = 0`
-> `for el in lst:`
-> `   sumMiddle = (el[1] + el[2]) / 2`
-> `   print(sumMiddle)`
+> если мы хотим подсчитать среднюю цену на каждый из фруктов, то напишем что-то вроде  
+> ```python
+> sumMiddle = 0
+> for el in lst:
+>   sumMiddle = (el[1] + el[2]) / 2
+>   print(sumMiddle)
+> ```
 >
-> или можно сделать это одной строкой
-> `[print((priceLow + priceHigh) / 2) for fruit, priceLow, priceHigh in lst]`
-> представьте, что наш список списков - это таблица из трёх столбцов
-> и мы можем обращаться к столбцам, просто озаглавив их fruit, priceLow, priceHigh
+> или можно сделать это одной строкой  
+> ```python
+> [print((priceLow + priceHigh) / 2) for fruit, priceLow, priceHigh in lst]
+> ```
+> представьте, что наш список списков - это таблица из трёх столбцов  
+> и мы можем обращаться к столбцам, просто озаглавив их fruit, priceLow, priceHigh  
 > в цикле for, почти как перебор элементов словаря for key, value in d.items() :)
 >
-> поэтому, когда вы захотите прикинуть, сколько же, от и до, в среднем может стоить
-> ваша фруктовая корзина, нужно будет посчитать среднее по каждой колонке
-> вы можете сделать это примерно так
-> `sumLow, sumHigh = 0, 0`
-> `for el in lst:`
-> `   sumLow += el[1]`
-> `   sumHigh += el[2]`
-> `sumLow /= len(lst)`
-> `sumHigh /= len(lst)`
-> `print(sumLow, sumHigh)`
+> поэтому, когда вы захотите прикинуть, сколько же, от и до, в среднем может стоить  
+> ваша фруктовая корзина, нужно будет посчитать среднее по каждой колонке  
+> вы можете сделать это примерно так  
+> ```python
+> sumLow, sumHigh = 0, 0
+> for el in lst:
+>     sumLow += el[1]
+>     sumHigh += el[2]
+> sumLow /= len(lst)
+> sumHigh /= len(lst)
+> print(sumLow, sumHigh)
+> ```
 >
-> или применить кунг-фу списковых выражений и обойтись парой строк :)
-> `print(sum([priceLow for fruit, priceLow, priceHigh in lst]) / len(lst))`
-> `print(sum([priceHigh for fruit, priceLow, priceHigh in lst]) / len(lst))`
+> или применить кунг-фу списковых выражений и обойтись парой строк :)  
+> ```python
+> print(sum([priceLow for fruit, priceLow, priceHigh in lst]) / len(lst))
+> print(sum([priceHigh for fruit, priceLow, priceHigh in lst]) / len(lst))
+> ```
 >
-> а где два принта, там и один :)
-> `print(sum([priceLow for fruit, priceLow, priceHigh in lst]) / len(lst), sum([priceHigh for fruit, priceLow, priceHigh in lst]) / len(lst))`
+> а где два принта, там и один :)  
+> ```python
+> print(sum([priceLow for fruit, priceLow, priceHigh in lst]) / len(lst), sum([priceHigh for fruit, priceLow, priceHigh in lst]) / len(lst))
+> ```
 >
-> надеюсь, вам было понятно и интересно
+> надеюсь, вам было понятно и интересно  
 > желаю успехов в учёбе!!!
 ﻿
 
@@ -483,12 +500,12 @@ subprocess.call(["python", "-h"])
 ```
 
 ### Материалы по модулям {#modules-links}
-https://docs.python.org/3/tutorial/modules.html
-https://docs.python.org/3/library/
-https://www.ibm.com/developerworks/ru/library/l-python_part_5/
+<https://docs.python.org/3/tutorial/modules.html>  
+<https://docs.python.org/3/library/>  
+<https://www.ibm.com/developerworks/ru/library/l-python_part_5/>
 
 
-### Однопроходные алгоритмы {#one-pass-algorithms}
+## Однопроходные алгоритмы {#one-pass-algorithms}
 | Алгоритм (обозначение) | Первоначальное значение | Формула |
 |---|---|---|
 | подсчёт (n)       |		(0)	|		n += 1 |
